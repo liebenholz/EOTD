@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\unreal proj\\de1\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\de1\\singlefile\\de1define.h.cpp",
+        "ProvidedModule": "",
+        "Includes": [
+            "d:\\unreal proj\\de1\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\de1\\definitions.de1.h",
+            "d:\\unreal proj\\de1\\intermediate\\build\\win64\\x64\\de1editor\\development\\unrealed\\shareddefinitions.unrealed.project.valapi.cpp20.h",
+            "d:\\unreal proj\\de1\\source\\de1\\de1define.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

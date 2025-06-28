@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\DE1.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\DE1.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\DE1Editor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGameplayTags.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\DE1">
+      <UniqueIdentifier>{72B513F4-F402-3DDE-B1DB-9A5437B63BE6}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\DE1\DE1.Build.cs">
+      <Filter>Source\DE1</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\DE1\DE1.cpp">
+      <Filter>Source\DE1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\DE1.h">
+      <Filter>Source\DE1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\DE1Define.cpp">
+      <Filter>Source\DE1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\DE1Define.h">
+      <Filter>Source\DE1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\DE1GameplayTags.cpp">
+      <Filter>Source\DE1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\DE1GameplayTags.h">
+      <Filter>Source\DE1</Filter>
+    </ClCompile>
+    <Filter Include="Source\DE1\Animation">
+      <UniqueIdentifier>{C3C425ED-C97F-3EF9-8FD6-012589845480}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\DE1\Animation\AnimNotifyState_DE1ComboWindow.cpp">
+      <Filter>Source\DE1\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Animation\AnimNotifyState_DE1ComboWindow.h">
+      <Filter>Source\DE1\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Animation\AnimNotifyState_DE1WeaponCollide.cpp">
+      <Filter>Source\DE1\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Animation\AnimNotifyState_DE1WeaponCollide.h">
+      <Filter>Source\DE1\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Animation\AnimNotify_DE1AttackFinished.cpp">
+      <Filter>Source\DE1\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Animation\AnimNotify_DE1AttackFinished.h">
+      <Filter>Source\DE1\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Animation\AnimNotify_DE1EquipWeapon.cpp">
+      <Filter>Source\DE1\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Animation\AnimNotify_DE1EquipWeapon.h">
+      <Filter>Source\DE1\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Animation\DE1AnimInstance.cpp">
+      <Filter>Source\DE1\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Animation\DE1AnimInstance.h">
+      <Filter>Source\DE1\Animation</Filter>
+    </ClCompile>
+    <Filter Include="Source\DE1\Character">
+      <UniqueIdentifier>{38C2B631-5806-325A-9CAE-84E0CF2FDBFA}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\DE1\Character\DE1Character.cpp">
+      <Filter>Source\DE1\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Character\DE1Character.h">
+      <Filter>Source\DE1\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Character\DE1Enemy.cpp">
+      <Filter>Source\DE1\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Character\DE1Enemy.h">
+      <Filter>Source\DE1\Character</Filter>
+    </ClCompile>
+    <Filter Include="Source\DE1\Components">
+      <UniqueIdentifier>{FE85536E-0104-3BE1-8541-D590709EF239}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\DE1\Components\DE1AttributeComponent.cpp">
+      <Filter>Source\DE1\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Components\DE1AttributeComponent.h">
+      <Filter>Source\DE1\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Components\DE1BattleComponent.cpp">
+      <Filter>Source\DE1\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Components\DE1BattleComponent.h">
+      <Filter>Source\DE1\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Components\DE1CombatComponent.cpp">
+      <Filter>Source\DE1\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Components\DE1CombatComponent.h">
+      <Filter>Source\DE1\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Components\DE1StateComponent.cpp">
+      <Filter>Source\DE1\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Components\DE1StateComponent.h">
+      <Filter>Source\DE1\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Components\DE1WeaponCollisionComponent.cpp">
+      <Filter>Source\DE1\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Components\DE1WeaponCollisionComponent.h">
+      <Filter>Source\DE1\Components</Filter>
+    </ClCompile>
+    <Filter Include="Source\DE1\Data">
+      <UniqueIdentifier>{268276FD-4035-3167-B2ED-A44712560A80}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\DE1\Data\DE1MontageActionData.cpp">
+      <Filter>Source\DE1\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Data\DE1MontageActionData.h">
+      <Filter>Source\DE1\Data</Filter>
+    </ClCompile>
+    <Filter Include="Source\DE1\Equipments">
+      <UniqueIdentifier>{33A00139-EFEE-3651-96C9-8B8A30CAE5CD}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\DE1\Equipments\DE1Equipment.cpp">
+      <Filter>Source\DE1\Equipments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Equipments\DE1Equipment.h">
+      <Filter>Source\DE1\Equipments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Equipments\DE1Weapon.cpp">
+      <Filter>Source\DE1\Equipments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Equipments\DE1Weapon.h">
+      <Filter>Source\DE1\Equipments</Filter>
+    </ClCompile>
+    <Filter Include="Source\DE1\GameModes">
+      <UniqueIdentifier>{99605DDF-1558-3382-A0A5-6125F87B47AA}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\DE1\GameModes\DE1GameMode.cpp">
+      <Filter>Source\DE1\GameModes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\GameModes\DE1GameMode.h">
+      <Filter>Source\DE1\GameModes</Filter>
+    </ClCompile>
+    <Filter Include="Source\DE1\Interfaces">
+      <UniqueIdentifier>{5B091791-5F84-3E6A-9D2E-C73B392B1867}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\DE1\Interfaces\DE1Interact.cpp">
+      <Filter>Source\DE1\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Interfaces\DE1Interact.h">
+      <Filter>Source\DE1\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Interfaces\DS1Interact.cpp">
+      <Filter>Source\DE1\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Interfaces\DS1Interact.h">
+      <Filter>Source\DE1\Interfaces</Filter>
+    </ClCompile>
+    <Filter Include="Source\DE1\Items">
+      <UniqueIdentifier>{10BF83F9-A2B7-3585-9D71-E735D4348E3B}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\DE1\Items\DE1PickupItem.cpp">
+      <Filter>Source\DE1\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\Items\DE1PickupItem.h">
+      <Filter>Source\DE1\Items</Filter>
+    </ClCompile>
+    <Filter Include="Source\DE1\PlayerController">
+      <UniqueIdentifier>{934CA790-C3EB-33D1-B764-6C06A587A4A2}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\DE1\PlayerController\DE1PlayerController.cpp">
+      <Filter>Source\DE1\PlayerController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\PlayerController\DE1PlayerController.h">
+      <Filter>Source\DE1\PlayerController</Filter>
+    </ClCompile>
+    <Filter Include="Source\DE1\UI">
+      <UniqueIdentifier>{35242F32-51B3-3AF8-B3B0-FBFA80565A17}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\DE1\UI\DE1PlayerHUDWidget.cpp">
+      <Filter>Source\DE1\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\UI\DE1PlayerHUDWidget.h">
+      <Filter>Source\DE1\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\UI\DE1StatBarWidget.cpp">
+      <Filter>Source\DE1\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DE1\UI\DE1StatBarWidget.h">
+      <Filter>Source\DE1\UI</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\unreal proj\\de1\\intermediate\\build\\win64\\unrealeditor\\inc\\de1\\uht\\de1combatcomponent.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\unreal proj\\de1\\intermediate\\build\\win64\\x64\\de1editor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\unreal proj\\de1\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\de1\\definitions.de1.h",
+            "d:\\unreal proj\\de1\\source\\de1\\components\\de1combatcomponent.h",
+            "d:\\unreal proj\\de1\\intermediate\\build\\win64\\unrealeditor\\inc\\de1\\uht\\de1combatcomponent.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
