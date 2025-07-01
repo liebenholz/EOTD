@@ -81,7 +81,7 @@ void UDS1AttributeComponent::TakeDamageAmount(float DamageAmount)
 	const float MaxDamage = DamageAmount * (DamageAmount / (DamageAmount + DefenseStat));
 	const float TotalDamage = FMath::Clamp(DamageAmount, 0, MaxDamage);
 
-	GEngine->AddOnScreenDebugMessage(6, 1.f, FColor::Red, FString::Printf(TEXT("DamageAmount:%f, TotalDamage: %f"), DamageAmount, TotalDamage));
+	// GEngine->AddOnScreenDebugMessage(6, 1.f, FColor::Red, FString::Printf(TEXT("DamageAmount:%f, TotalDamage: %f"), DamageAmount, TotalDamage));
 
 	// 체력 차감.
 	BaseHealth = FMath::Clamp(BaseHealth - TotalDamage, 0.f, MaxHealth);
