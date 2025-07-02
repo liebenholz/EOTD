@@ -11,6 +11,6 @@ Soulslike Single Player Action RPG, `Unreal Engine 5.5`
 - Behavior Tree based AI Enemy
 - Enhanced AI Boss Monster with Exclusive Level and Attack Patterns
 
-## Input Available with
-- Keyboard & Mouse
-- Gamepad
+## Available Platform & Input Device
+- Windows(PC)
+- Keyboard & Mouse OR Gamepad
