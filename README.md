@@ -2,7 +2,7 @@
 Kangwon National University Computer Science: Capstone Design
 
 Soulslike Single Player Action RPG made with `Unreal Engine 5.5`
-- **Gameplay Trailer** : [YouTube](https://youtu.be/BEwwlQib5Lk)
+- **Gameplay Trailer** : [YouTube](https://youtu.be/rarDWn-Mdrc)
 - **Boss Mode Demo** : [YouTube](https://youtu.be/60AuISjqNLI)
 
 ## Mechanism
