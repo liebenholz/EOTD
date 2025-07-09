@@ -50,7 +50,7 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* InteractAction;
 
-	/** 전투 활성화/비활성화 토글 */
+	/** Combat Activate/Deactivate Toggle */
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* ToggleCombatAction;
 
@@ -62,40 +62,40 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* HeavyAttackAction;
 
-	/** LockedOn */
+	/** Target Lock On */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LockOnTargetAction;
 
-	/** 왼쪽으로 타겟 전환 */
+	/** Set Target to Left */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LeftTargetAction;
 
-	/** 오른쪽으로 타겟 전환 */
+	/** Set Target to Right */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* RightTargetAction;
 
-	/** 방어 자세 */
+	/** Block Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* BlockAction;
 
-	/** 패링 */
+	/** Parry */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* ParryAction;
 
-	/** 포션마시기 */
+	/** Drink Potion */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* ConsumeAction;
 
 private:
-	/** 캐릭터의 각종 스탯 관리 */
+	/** Character Attributes */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UDS1AttributeComponent* AttributeComponent;
 
-	/** 캐릭터의 상태 관리 */
+	/** Charactre Status */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UDS1StateComponent* StateComponent;
 
-	/** 무기, 전투 관리 */
+	/** Weapon & Combat */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UDS1CombatComponent* CombatComponent;
 
@@ -103,7 +103,7 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UDS1TargetingComponent* TargetingComponent;
 
-	/** 포션 인벤토리 */
+	/** Potion Inventory */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UDS1PotionInventoryComponent* PotionInventoryComponent;
 
@@ -127,7 +127,7 @@ protected:
 	UPROPERTY()
 	UDS1PlayerHUDWidget* PlayerHUDWidget;
 
-// 주먹 무기
+// Fist Weapon
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<ADS1FistWeapon> FistWeaponClass;
@@ -147,43 +147,43 @@ protected:
 	UParticleSystem* BlockingParticle;
 
 protected:
-	/** 질주 속도 */
+	/** Sprint Speed */
 	UPROPERTY(EditAnywhere, Category="Movement Speed")
 	float SprintingSpeed = 750.f;
 
-	/** 일반 속도 */
+	/** Normal Speed */
 	UPROPERTY(EditAnywhere, Category = "Movement Speed")
 	float NormalSpeed = 500.f;
 
-	/** 방어자세 속도 */
+	/** Blocking Speed */
 	UPROPERTY(EditAnywhere, Category = "Movement Speed")
 	float BlockingSpeed = 250.f;
 
+	/** Is Character Sprinting? */
 	UPROPERTY(VisibleAnywhere, Category = "Movement Speed")
 	bool bSprinting = false;
 
 // Combo Section
 protected:
-	/** 콤보 시퀀스 진행중 */
+	/** Is Running Combo Sequence? */
 	bool bComboSequenceRunning = false;
 
-	/** 콤보 입력 가능? */
+	/** Is Combo Enable? */
 	bool bCanComboInput = false;
 
-	/** 콤보 카운터 */
+	/** Combo Counter */
 	int32 ComboCounter = 0;
 
-	/** 콤보 입력 여부 */
 	bool bSavedComboInput = false;
 
-	/** 콤보 리셋 타이머 핸들 */
+	/** Combo Reset Timer Handle */
 	FTimerHandle ComboResetTimerHandle;
 
 protected:
-	/** 적과 대치중인 방향인지? */
+	/** Is the Direction Facing the Enemy? */
 	bool bFacingEnemy = false;
 
-	/** 무적프레임 활성화 여부 */
+	/** Is Invincibie Frame Enabled? */
 	bool bEnabledIFrames = false;
 
 // Montage Section

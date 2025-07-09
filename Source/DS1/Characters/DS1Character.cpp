@@ -38,21 +38,23 @@ ADS1Character::ADS1Character()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 500.f, 0.f);
 
-	/** 이동, 감속 속도 */
+	/** Speed, Decelerating */
 	GetCharacterMovement()->MaxWalkSpeed = 500.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 
+	/** Spring Arm */
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->TargetArmLength = 400.0f;
 	CameraBoom->SetRelativeRotation(FRotator(-30.f, 0.f, 0.f));
 	CameraBoom->bUsePawnControlRotation = true;
 
-
+    /** Camera Attached to Spring Arm */
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom);
 	FollowCamera->bUsePawnControlRotation = false;
 
+	/** Character Mesh Settings */
 	TorsoMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Torso"));
 	LegsMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Legs"));
 	FeetMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Feet"));
@@ -60,16 +62,17 @@ ADS1Character::ADS1Character()
 	LegsMesh->SetupAttachment(GetMesh());
 	FeetMesh->SetupAttachment(GetMesh());
 
+	/** Character Attributes, Status, Combat Condition */
 	AttributeComponent = CreateDefaultSubobject<UDS1AttributeComponent>(TEXT("Attribute"));
 	StateComponent = CreateDefaultSubobject<UDS1StateComponent>(TEXT("State"));
 	CombatComponent = CreateDefaultSubobject<UDS1CombatComponent>(TEXT("Combat"));
 	// LockedOn Targeting
 	TargetingComponent = CreateDefaultSubobject<UDS1TargetingComponent>(TEXT("Targeting"));
 
-	// OnDeath Delegate 함수 바인딩.
+	// Bind Function OnDeath Delegate.
 	AttributeComponent->OnDeath.AddUObject(this, &ThisClass::OnDeath);
 
-	// 포션 인벤토리
+	// Potion Inventory
 	PotionInventoryComponent = CreateDefaultSubobject<UDS1PotionInventoryComponent>(TEXT("PotionInventory"));
 
 }
@@ -78,7 +81,7 @@ void ADS1Character::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// Player HUD를 생성
+	// Create Player HUD Widget
 	if (PlayerHUDWidgetClass)
 	{
 		PlayerHUDWidget = CreateWidget<UDS1PlayerHUDWidget>(GetWorld(), PlayerHUDWidgetClass);
@@ -88,7 +91,7 @@ void ADS1Character::BeginPlay()
 		}
 	}
 
-	// 주먹 무기 장착
+	// Equip Fist Weapon in Default
 	if (FistWeaponClass)
 	{
 		FActorSpawnParameters SpawnParams;
@@ -125,38 +128,38 @@ void ADS1Character::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ThisClass::Move);
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ThisClass::Look);
 
-		// 질주
+		// Sprint
 		EnhancedInputComponent->BindAction(SprintRollingAction, ETriggerEvent::Triggered, this, &ThisClass::Sprinting);
 		EnhancedInputComponent->BindAction(SprintRollingAction, ETriggerEvent::Completed, this, &ThisClass::StopSprint);
-		// 구르기
+		// Roll
 		EnhancedInputComponent->BindAction(SprintRollingAction, ETriggerEvent::Canceled, this, &ThisClass::Rolling);
-		// 인터렉션
+		// Interaction
 		EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Started, this, &ThisClass::Interact);
-		// 전투 활성/비활성
+		// Combat Activate/Deactivate
 		EnhancedInputComponent->BindAction(ToggleCombatAction, ETriggerEvent::Started, this, &ThisClass::ToggleCombat);
 
-		// Combat 상태로 자동 전환.
+		// Auto Toggle to Combat
 		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Started, this, &ThisClass::AutoToggleCombat);
-		// 일반 공격
+		// Normal Attack
 		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Canceled, this, &ThisClass::Attack);
-		// 특수 공격
+		// Special Attack
 		EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &ThisClass::SpecialAttack);
-		// HeavyAttack
+		// Heavy Attack
 		EnhancedInputComponent->BindAction(HeavyAttackAction, ETriggerEvent::Started, this, &ThisClass::HeavyAttack);
 
-		// LockedOn
+		// Lock On
 		EnhancedInputComponent->BindAction(LockOnTargetAction, ETriggerEvent::Started, this, &ThisClass::LockOnTarget);
 		EnhancedInputComponent->BindAction(LeftTargetAction, ETriggerEvent::Started, this, &ThisClass::LeftTarget);
 		EnhancedInputComponent->BindAction(RightTargetAction, ETriggerEvent::Started, this, &ThisClass::RightTarget);
 
-		// 방어 자세
+		// Block Action
 		EnhancedInputComponent->BindAction(BlockAction, ETriggerEvent::Started, this, &ThisClass::Blocking);
 		EnhancedInputComponent->BindAction(BlockAction, ETriggerEvent::Completed, this, &ThisClass::BlockingEnd);
 
-		// 패링
+		// Parry Action
 		EnhancedInputComponent->BindAction(ParryAction, ETriggerEvent::Started, this, &ThisClass::Parrying);
 
-		// 포션 마시기
+		// Drink Potion
 		EnhancedInputComponent->BindAction(ConsumeAction, ETriggerEvent::Started, this, &ThisClass::Consume);
 	}
 
@@ -205,13 +208,13 @@ float ADS1Character::TakeDamage(float Damage, const FDamageEvent& DamageEvent, A
 	check(AttributeComponent);
 	check(StateComponent);
 
-	// 포션을 마시고 있으면 중단.
+	// Interrupt While Drinking Potion
 	InterruptWhileDrinkingPotion();
 
-	// 적과 대치중인 방향인지?
+	// Is the Direction FAcing Enemy?
 	bFacingEnemy = UKismetMathLibrary::InRange_FloatFloat(GetDotProductTo(EventInstigator->GetPawn()), -0.1f, 1.f);
 
-	// 패링
+	// Parry
 	if (ParriedAttackSucceed())
 	{
 		if (IDS1CombatInterface* CombatInterface = Cast<IDS1CombatInterface>(EventInstigator->GetPawn()))
@@ -230,11 +233,11 @@ float ADS1Character::TakeDamage(float Damage, const FDamageEvent& DamageEvent, A
 	}
 
 
-	// 방패 방어가 가능한지?
+	// Is Blockable?
 	if (CanPerformAttackBlocking())
 	{
 		AttributeComponent->TakeDamageAmount(0.f);
-		// 스테미나 차감
+		// Decrease Stamina
 		AttributeComponent->DecreaseStamina(20.f);
 		StateComponent->SetState(DS1GameplayTags::Character_State_Blocking);
 	}
@@ -244,20 +247,20 @@ float ADS1Character::TakeDamage(float Damage, const FDamageEvent& DamageEvent, A
 		StateComponent->SetState(DS1GameplayTags::Character_State_Hit);
 	}
 
-	// 움직이지 못하게 한다.
+	// Make Unmovable.
 	StateComponent->ToggleMovementInput(false);
 
 	if (DamageEvent.IsOfType(FPointDamageEvent::ClassID))
 	{
 		const FPointDamageEvent* PointDamageEvent = static_cast<const FPointDamageEvent*>(&DamageEvent);
 
-		// 데미지 방향
+		// Damage Direction
 		FVector ShotDirection = PointDamageEvent->ShotDirection;
-		// 히트 위치 (표면 접촉 관점)
+		// Hit Point
 		FVector ImpactPoint = PointDamageEvent->HitInfo.ImpactPoint;
-		// 히트 방향
+		// Hit Direction
 		FVector ImpactDirection = PointDamageEvent->HitInfo.ImpactNormal;
-		// 히트한 객체의 Location (객체 중심 관점)
+		// Object's Location (at Object Perspective)
 		FVector HitLocation = PointDamageEvent->HitInfo.Location;
 
 		ImpactEffect(ImpactPoint);
@@ -420,7 +423,7 @@ void ADS1Character::Move(const FInputActionValue& Values)
 {
 	check(StateComponent);
 
-	// 이동 입력 가능 상태인지 체크.
+	// Is Movement Input Enable?
 	if (StateComponent->MovementInputEnabled() == false)
 	{
 		return;
@@ -436,19 +439,14 @@ void ADS1Character::Move(const FInputActionValue& Values)
 		const FVector ForwardVector = FRotationMatrix(YawRotator).GetUnitAxis(EAxis::X);
 		const FVector RightVector = FRotationMatrix(YawRotator).GetUnitAxis(EAxis::Y);
 
-		// 주어진 월드 방향 벡터(보통 정규화됨)를 따라 'ScaleValue'만큼 스케일된 이동 입력을 추가합니다. 
-		// ScaleValue가 0보다 작으면, 이동은 반대 방향으로 이루어집니다.
-		// ScaleValue는 아날로그 입력에 사용될 수 있습니다. 
-		// 예를 들어, 0.5 값은 정상 값의 절반을 적용하고, -1.0은 방향을 반대로 합니다.
 		AddMovementInput(ForwardVector, MovementVector.Y);
 		AddMovementInput(RightVector, MovementVector.X);
-		
 	}
 }
 
 void ADS1Character::Look(const FInputActionValue& Values)
 {
-	// LockedOn 상태에서는 입력 차단.
+	// Input Unavailable while LockedOn
 	if (TargetingComponent && TargetingComponent->IsLockOn())
 	{
 		return;
